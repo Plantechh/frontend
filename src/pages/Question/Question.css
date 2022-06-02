@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    padding: 20px;
+    margin-top: 40px;
+}
+  
+.back, .right {
+    flex: 1;
+}
+.back {
+    color: green;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 140px;
+}
+body {
+    background-color: #EDF1F2;
+}

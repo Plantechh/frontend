@@ -1,7 +1,7 @@
 import App from './App';
 import { Route, BrowserRouter as Router, Routes as RouterRoutes } from "react-router-dom";
-import Question from './pages/Question';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import Question from './pages/Question/Question';
 
 function Routes() {
 
