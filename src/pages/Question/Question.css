@@ -16,3 +16,12 @@
 body {
     background-color: #EDF1F2;
 }
+.question {
+    font-size: 85px;
+    text-align: center;
+    color: #043B24;
+}
+.line {
+    display: flex;
+    justify-content: space-around;
+}

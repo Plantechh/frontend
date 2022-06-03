@@ -12,4 +12,8 @@
     margin: 6px 8px 6px 8px;
     background-color: #043C23;
     border-radius: 31px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
