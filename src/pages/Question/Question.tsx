@@ -1,13 +1,32 @@
+import { useContext, useEffect, useState } from 'react';
 import AnswerButton from '../../components/AnswerButton/AnswerButton';
 import LoadBar from '../../components/Loadbar/LoadBar.component';
+import { QuestionContext } from '../../context/QuestionContext';
 import './Question.css';
 
 function Question() {
+    const context = useContext(QuestionContext);
+    const [loading, setLoading] = useState<Boolean>(false);
+    context.setTotalLoadbar(25);
+    
+    useEffect(() => {
+        if(!context.actualQuestion) {
+            setLoading(true);
+        }else{
+            setLoading(false);
+        }
+        console.log(context.actualQuestion);
+        debugger;
+    }, [context.actualQuestion]);
+    
+    if(loading == true) {
+        return (<>CARREGANDO....</>)
+    }
     return (
         <div className="fullscreen bg-grey">
             <div className="header">
                 <div className="back">{'< voltar'}</div>
-                <div className="center"> <LoadBar loaded={100} /></div>
+                <div className="center"><LoadBar /></div>
                 <div className="right"></div>
             </div>
             <div className="question">

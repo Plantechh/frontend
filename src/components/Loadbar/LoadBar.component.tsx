@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { QuestionContext } from "../../context/QuestionContext";
 import './Loadbar.css';
 
-interface LoadbarProp {
-    loaded: number
-}
-function LoadBar(props: LoadbarProp) {
-    const [loaded, setLoaded] = useState(props.loaded);
+function LoadBar() {
+    const context = useContext(QuestionContext);
     return (
         <div className="loadbar">
-            <div className="progress" style={{width: `${loaded}%`}}>
-                {/* {props.loaded}% */}
+            <div className="progress" style={{width: `${context.loaded}%`}}>
+                {/* {context.loaded}% */}
             </div>
         </div>
     )

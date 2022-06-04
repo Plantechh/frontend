@@ -1,0 +1,108 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "title": "Como é seu dia perfeito?",
+            "alternatives": [
+                {
+                    "id": 1,
+                    "title": "Ir pra um show de stand up",
+                    "points": 1
+                },
+                {
+                    "id": 2,
+                    "title": "Ir pra um show de stand up",
+                    "points": 2
+                },
+                {
+                    "id": 3,
+                    "title": "Ir pra piscina com a galera em um dia de sol",
+                    "points": 3
+                },
+                {
+                    "id": 4,
+                    "title": "Ficar assistindo série num dia chuvoso debaixo de um edredom quentinho",
+                    "points": 4
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Em uma roda de conversa, você é a pessoa que:",
+            "alternatives": [
+                {
+                    "id": 5,
+                    "title": "Preferia ficar em casa",
+                    "points": 1
+                },
+                {
+                    "id": 6,
+                    "title": "Não para de falar",
+                    "points": 2
+                },
+                {
+                    "id": 7,
+                    "title": "Faz piadas",
+                    "points": 3
+                },
+                {
+                    "id": 8,
+                    "title": "Não conversa muito, só observa",
+                    "points": 4
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Qual seu gênero de filme favorito?",
+            "alternatives": [
+                {
+                    "id": 9,
+                    "title": "Drama",
+                    "points": 1
+                },
+                {
+                    "id": 10,
+                    "title": "Comédia",
+                    "points": 2
+                },
+                {
+                    "id": 11,
+                    "title": "Ficção científica",
+                    "points": 3
+                },
+                {
+                    "id": 12,
+                    "title": "Ação",
+                    "points": 4
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Quando surge um problema, você costuma:",
+            "alternatives": [
+                {
+                    "id": 13,
+                    "title": "Vou correndo contar com um amigo",
+                    "points": 1
+                },
+                {
+                    "id": 14,
+                    "title": "Ser realista e enfrentar a situação",
+                    "points": 2
+                },
+                {
+                    "id": 15,
+                    "title": "Chorar",
+                    "points": 3
+                },
+                {
+                    "id": 16,
+                    "title": "Pensar no lado positivo da situação",
+                    "points": 4
+                }
+            ]
+        }
+    ]
+}
