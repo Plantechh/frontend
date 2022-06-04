@@ -1,4 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AnswerButton from '../../components/AnswerButton/AnswerButton';
 import LoadBar from '../../components/Loadbar/LoadBar.component';
 import { QuestionContext } from '../../context/QuestionContext';
@@ -7,6 +8,7 @@ import Loading from '../Loading/Loading';
 import './Question.css';
 
 function Question() {
+    const navigate = useNavigate();
     const context = useContext(QuestionContext);
     const api = useAPI();
     context.setTotalLoadbar(10);
@@ -75,7 +77,7 @@ function Question() {
     return (
         <div className="bg-grey">
             <div className="header">
-                <div className="back">{'< voltar'}</div>
+                <div className="back" onClick={() => navigate('/')}>{'< voltar'}</div>
                 <div className="center"><LoadBar /></div>
                 <div className="right"></div>
             </div>
