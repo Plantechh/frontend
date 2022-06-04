@@ -7,7 +7,7 @@ import './Question.css';
 function Question() {
     const context = useContext(QuestionContext);
     const [loading, setLoading] = useState<Boolean>(false);
-    context.setTotalLoadbar(25);
+    context.setTotalLoadbar(80);
     
     useEffect(() => {
         if(!context.actualQuestion) {
@@ -16,14 +16,13 @@ function Question() {
             setLoading(false);
         }
         console.log(context.actualQuestion);
-        debugger;
     }, [context.actualQuestion]);
     
     if(loading == true) {
         return (<>CARREGANDO....</>)
     }
     return (
-        <div className="fullscreen bg-grey">
+        <div className="bg-grey">
             <div className="header">
                 <div className="back">{'< voltar'}</div>
                 <div className="center"><LoadBar /></div>
