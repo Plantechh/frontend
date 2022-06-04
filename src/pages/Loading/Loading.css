@@ -1,0 +1,20 @@
+.unionWrapper{
+    position: absolute;
+    width: 200px;
+    height: 219px;
+    left: 900px;
+    top: 386px;
+  }
+
+.text{
+    position: absolute;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 85px;
+    line-height: 128px;
+    color: #043B24;
+    left: 418px;
+    top: 681px;
+}
+  

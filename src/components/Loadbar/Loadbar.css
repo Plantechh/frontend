@@ -1,0 +1,19 @@
+.loadbar {
+    width: 820px;
+    height: 52px;
+    background-color: #D9D9D9;
+    border-radius: 31px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+}
+.progress {
+    height: 40px;
+    margin: 6px 8px 6px 8px;
+    background-color: #043C23;
+    border-radius: 31px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

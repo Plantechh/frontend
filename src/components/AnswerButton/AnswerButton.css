@@ -1,0 +1,12 @@
+.answer_button {
+    color: white;
+    width: 756px;
+    height: 229px;
+    margin-bottom: 80px;
+    border-radius: 70px;
+    border: 0;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5);
+    font-size: 40px;
+    font-family: 'Poppins';
+    text-overflow: ellipsis;
+}
