@@ -1,10 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import AnswerButton from '../../components/AnswerButton/AnswerButton';
 import LoadBar from '../../components/Loadbar/LoadBar.component';
-import Loading from '../../components/Loading/Loading.component';
 import { QuestionContext } from '../../context/QuestionContext';
-import { IQuestion } from '../../core/responses/Question.interface';
 import useAPI from '../../hooks/useApi';
+import Loading from '../Loading/Loading';
 import './Question.css';
 
 function Question() {
