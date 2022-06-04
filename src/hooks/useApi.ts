@@ -7,8 +7,7 @@ function useAPI() {
     });
 
     const getQuestions = async (): Promise<any> => {
-        const {data} = await requester.get<IQuestion>('v3/3cae2b17-50df-442b-8a0d-8171c864e900');
-        console.log(data);
+        const {data} = await requester.get<IQuestion>('v3/6297eb81-c97b-4f7c-bb50-9da6fdc53993');
         return data;
     }
 

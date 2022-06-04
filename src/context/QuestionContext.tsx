@@ -6,33 +6,30 @@ export const QuestionContext = React.createContext<any>({});
 
 function QuestionProvider(props: any) {
     const [loaded, setLoaded] = useState(0);
-    const [questions, setQuestion] = useState<IQuestion[]>([]);
-    const [actualQuestion, setActualQuestion] = useState<Partial<IQuestion>>({});
-    const [completedQuestions, setCompletedQuestions] = useState<IQuestion[]>([]);
+    const [questions, setQuestions] = useState<IQuestion[]>([]);
+    const [remainQuestions, setRemainQuestions] = useState<any[]>([]);
+    const [loading, setLoading] = useState<Boolean>(true);
     const api = useAPI();
-
-    useEffect(() => {
-        const fetchQuestions = async() => {
-            try {
-                const fullQuestions = await api.getQuestions();
-                setQuestion(fullQuestions);
-            } catch (error) {
-                console.log("ERROR", error);
-            }
-        }
-        fetchQuestions();
-    }, [])
 
     const setTotalLoadbar = (total: number) => {
         setTimeout(() => loaded < total ? setLoaded(loaded + 1) : setLoaded(total), 30);
     }
+    const addCompleted = (id: number) => {
+        console.log("antigo", remainQuestions);
+        const remove = remainQuestions.filter((value: any) => value.id == id)
+        remainQuestions.splice(remainQuestions.indexOf(remove));
+        console.log('novo', remainQuestions);
+    };
     const response: any = {
         loaded,
         setTotalLoadbar,
         questions,
-        actualQuestion,
-        setActualQuestion,
-        completedQuestions,
+        remainQuestions,
+        setRemainQuestions,
+        addCompleted,
+        loading,
+        setLoading,
+        setQuestions,
     }
     return (
         <QuestionContext.Provider value={response}>

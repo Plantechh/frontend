@@ -1,25 +1,77 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import AnswerButton from '../../components/AnswerButton/AnswerButton';
 import LoadBar from '../../components/Loadbar/LoadBar.component';
+import Loading from '../../components/Loading/Loading.component';
 import { QuestionContext } from '../../context/QuestionContext';
+import { IQuestion } from '../../core/responses/Question.interface';
+import useAPI from '../../hooks/useApi';
 import './Question.css';
 
 function Question() {
     const context = useContext(QuestionContext);
-    const [loading, setLoading] = useState<Boolean>(false);
-    context.setTotalLoadbar(80);
-    
+    const api = useAPI();
+    context.setTotalLoadbar(10);
+    const [currentQuestion, setCurrent] = useState<any>({});
+    const [index, setIndex] = useState(0);
+
+        const fetchQuestions = useCallback(async() => {
+            context.setLoading(true);
+            let questions;
+            try {
+                questions = await api.getQuestions();
+                context.setQuestions(questions.questions);
+                context.setRemainQuestions(...questions.questions);
+                // defineQuestion(questions);
+                context.setLoading(false);
+            } catch (error) {
+                console.log("ERROR", error);
+            }
+            context.setLoading(false);
+            return questions;
+        }, [context.questions]);
+
     useEffect(() => {
-        if(!context.actualQuestion) {
-            setLoading(true);
+        fetchQuestions();
+    }, []);
+
+    const defineOrder = (questions: any[]) => {
+        const array: any[] = [];
+        questions.every((v: any) => array.push(v));
+        context.setRemainQuestions(array);
+    }
+    // const defineQuestion = () => {
+    //     let next = {};
+    //     context.questions.every((question: any) => {
+    //         console.log('q', question);
+    //         console.log('from context', context.completedQuestions);    
+    //         console.log("context.completedQuestions.includes(id)", context.completedQuestions.includes(question.id), question.id)
+    //         if(context.completedQuestions.includes(question.id) == false) {
+    //             next = question
+    //             return false;
+    //         }
+    //     });
+    //     if(Object.keys(next).length == 0) {
+    //         alert('PERGUNTAS COMPLETAS!');
+    //     }else{
+    //         currentQuestion = next;
+    //     }
+    // }
+    const proxima = () => {
+        // context.addCompleted(currentQuestion.id);
+        console.log("ind", index);
+        console.log("id", context.questions.length - 1);
+        if(index == context.questions.length - 1) {
+            alert('ALL DONE');
         }else{
-            setLoading(false);
+            setIndex(index + 1);
+            console.log("next");
         }
-        console.log(context.actualQuestion);
-    }, [context.actualQuestion]);
-    
-    if(loading == true) {
-        return (<>CARREGANDO....</>)
+    }
+    if(context.loading == true) {
+        return (<Loading></Loading>)
+    }
+    if(!currentQuestion.id) {
+        setCurrent(context.questions[index]);
     }
     return (
         <div className="bg-grey">
@@ -29,11 +81,11 @@ function Question() {
                 <div className="right"></div>
             </div>
             <div className="question">
-                <h3>Como é seu dia perfeito?</h3>
+                <h3>{currentQuestion.title}</h3>
             </div>
             <div className="answers">
                 <div className="line">
-                    <AnswerButton text={"Ir para um show de stand up"} color={"green"} />
+                    <AnswerButton onClick={proxima} text={"Ir para um show de stand up"} color={"green"} />
                     <AnswerButton text={"Ir pra piscina com a galera em um dia de sol"} color={"orange"} />
                 </div>
                 <div className="line">
