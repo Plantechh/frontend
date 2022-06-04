@@ -1,0 +1,40 @@
+.filter-pink{
+  fill: #FD026B;
+}
+
+.filter-orange{
+  fill: #FE5E06;
+}
+
+.filter-green{
+  fill: #037921;
+}
+
+.filter-yellow{
+  fill: #FFB701;
+}
+
+.unionWrapper{
+    position: absolute;
+    left: 900px;
+    top: 386px;
+  }
+
+/*
+. rot {
+  transform: rotate(-90deg);
+}
+*/
+
+.text{
+    position: absolute;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 85px;
+    line-height: 128px;
+    color: #043B24;
+    left: -150px; /*418px*/
+    top: 300px; /*681px*/
+}
+  
