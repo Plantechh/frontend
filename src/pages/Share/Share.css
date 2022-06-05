@@ -1,0 +1,79 @@
+.buttonClose{
+    border: none;
+    position: absolute;
+    width: 154px;
+    height: 56px;
+    left: 1674px;
+    top: 84px;
+    color: #043B24;
+    margin: 1rem 0;
+    font-size: 40px;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+  }
+
+.bg-green{
+    position: absolute;
+    width: 935px;
+    height: 351px;
+    left: 176px;
+    top: 253px;
+    background: #037921;
+    border-radius: 61px;
+}
+
+.bg-qrcode{
+    position: absolute;
+    width: 673px;
+    height: 665px;
+    left: 1193px;
+    top: 253px;
+    background: #037921;
+    border-radius: 34px;
+}
+
+.qrcode-position{
+    position: center;
+    width: 593px;
+    height: 593px;
+    margin: 0rem 0;
+    padding:35px;
+}
+
+.text{
+    position: absolute;
+    width: 973px;
+    left: 157px;
+    top: 270px; /*311px*/
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 112px;
+    text-align: center;
+    color: #FFFFFF; 
+}
+
+.icon{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 1842px;
+    top: 95px;
+    border-radius: 50%;
+    background: #043B24; 
+}
+
+.x-icon{
+    position: absolute;
+    left: 25%; /*154.92%*/
+    top: 25%; /*4.7%*/
+}
+
+.bg-position{
+    position: absolute;
+    left: 1010px;
+    top: 535px;
+}
