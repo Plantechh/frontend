@@ -11,9 +11,8 @@ function Question() {
     const navigate = useNavigate();
     const context = useContext(QuestionContext);
     const api = useAPI();
-    context.setTotalLoadbar(10);
     const [currentQuestion, setCurrent] = useState<any>({});
-    const [index, setIndex] = useState(0);
+    let totalQuestions = 0;
 
         const fetchQuestions = useCallback(async() => {
             context.setLoading(true);
@@ -22,7 +21,7 @@ function Question() {
                 questions = await api.getQuestions();
                 context.setQuestions(questions.questions);
                 context.setRemainQuestions(...questions.questions);
-                // defineQuestion(questions);
+                totalQuestions = questions.questions.length
                 context.setLoading(false);
             } catch (error) {
                 console.log("ERROR", error);
@@ -33,46 +32,27 @@ function Question() {
 
     useEffect(() => {
         fetchQuestions();
+        setLoadbar();
     }, []);
 
-    const defineOrder = (questions: any[]) => {
-        const array: any[] = [];
-        questions.every((v: any) => array.push(v));
-        context.setRemainQuestions(array);
+    const setLoadbar = () => {
+        context.setTotalLoadbar(80);
     }
-    // const defineQuestion = () => {
-    //     let next = {};
-    //     context.questions.every((question: any) => {
-    //         console.log('q', question);
-    //         console.log('from context', context.completedQuestions);    
-    //         console.log("context.completedQuestions.includes(id)", context.completedQuestions.includes(question.id), question.id)
-    //         if(context.completedQuestions.includes(question.id) == false) {
-    //             next = question
-    //             return false;
-    //         }
-    //     });
-    //     if(Object.keys(next).length == 0) {
-    //         alert('PERGUNTAS COMPLETAS!');
-    //     }else{
-    //         currentQuestion = next;
-    //     }
-    // }
     const proxima = () => {
-        // context.addCompleted(currentQuestion.id);
-        console.log("ind", index);
-        console.log("id", context.questions.length - 1);
-        if(index == context.questions.length - 1) {
-            alert('ALL DONE');
+        context.questions.shift();
+        if(context.questions.length > 0) {
+            setCurrent(context.questions[0]);
         }else{
-            setIndex(index + 1);
-            console.log("next");
+            alert('END');
         }
+        console.log(context.loaded);
+        
     }
     if(context.loading == true) {
         return (<Loading></Loading>)
     }
     if(!currentQuestion.id) {
-        setCurrent(context.questions[index]);
+        setCurrent(context.questions[0]);
     }
     return (
         <div className="bg-grey">

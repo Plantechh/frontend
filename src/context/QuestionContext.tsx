@@ -12,21 +12,20 @@ function QuestionProvider(props: any) {
     const api = useAPI();
 
     const setTotalLoadbar = (total: number) => {
-        setTimeout(() => loaded < total ? setLoaded(loaded + 1) : setLoaded(total), 30);
+        console.log('will set to ', total);
+        const int = setInterval(() => {
+            if(loaded < total) {
+                setLoaded(loaded + 1);
+            }else{
+                clearInterval(int);
+            }
+        }, 30);
     }
-    const addCompleted = (id: number) => {
-        console.log("antigo", remainQuestions);
-        const remove = remainQuestions.filter((value: any) => value.id == id)
-        remainQuestions.splice(remainQuestions.indexOf(remove));
-        console.log('novo', remainQuestions);
-    };
     const response: any = {
         loaded,
         setTotalLoadbar,
         questions,
-        remainQuestions,
         setRemainQuestions,
-        addCompleted,
         loading,
         setLoading,
         setQuestions,
