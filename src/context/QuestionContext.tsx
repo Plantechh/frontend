@@ -9,13 +9,21 @@ function QuestionProvider(props: any) {
     const [questions, setQuestions] = useState<IQuestion[]>([]);
     const [remainQuestions, setRemainQuestions] = useState<any[]>([]);
     const [loading, setLoading] = useState<Boolean>(true);
+    const [points, setPoints] = useState<number>(0);
     const api = useAPI();
 
     const setTotalLoadbar = (total: number) => {
-        console.log('will set to ', total);
         const int = setInterval(() => {
             if(loaded < total) {
-                setLoaded(loaded + 1);
+                setLoaded((prev: number) => {
+                    if(prev < total) {
+                        return prev + 1;
+                    }else {
+                        clearInterval(int);
+                        return total;
+                    }
+                });
+
             }else{
                 clearInterval(int);
             }
@@ -24,11 +32,14 @@ function QuestionProvider(props: any) {
     const response: any = {
         loaded,
         setTotalLoadbar,
+        setLoaded,
         questions,
         setRemainQuestions,
         loading,
         setLoading,
         setQuestions,
+        points,
+        setPoints,
     }
     return (
         <QuestionContext.Provider value={response}>

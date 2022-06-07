@@ -3,11 +3,11 @@ import axios from "axios";
 
 function useAPI() {
     const requester = axios.create({
-        baseURL: 'https://run.mocky.io/'
+        baseURL: 'https://mocki.io/'
     });
 
     const getQuestions = async (): Promise<any> => {
-        const {data} = await requester.get<IQuestion>('v3/6297eb81-c97b-4f7c-bb50-9da6fdc53993');
+        const {data} = await requester.get<IQuestion>('v1/d7b27cc7-89c4-4cbe-94e4-3239d9edf52a');
         return data;
     }
 

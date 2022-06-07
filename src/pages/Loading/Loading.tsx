@@ -1,18 +1,42 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Loading.css';
-import Union from './Union.svg'
+import Plant from './Plant.json';
+import Lottie from 'react-lottie';
+
+const text = [
+    "carregando...",
+    "estamos avaliando seus dados",
+    "você sabia que 68% das plantas estão ameaçadas de extinção?",
+    "você sabia que plantas podem ouvir"
+];
 
 function Loading() {
-    //const [isPink, isOrange, isGreen, isYellow] = useState(300);
+    const defaultOptions = {
+        loop: true, autoplay: true, animationData: Plant,
+    };
+
+    const [newText, setnewText] = useState(0);
 
     return (
-        <div className="unionWrapper">
-            <img src={Union} alt="Union Logo" />
-            <h1 className="text">carregando...</h1>
+        <div>
+            <Lottie style={{ flex: 1, padding: 0, margin: 0, position: 'absolute', left: 20, top: 150, }}
+                options={defaultOptions}
+                isPaused={false}
+                isStopped={false}
+                direction={1}
+                speed={1.5}
+                height={600}
+                width={1900}
+                isClickToPauseDisabled={false}
+            />
+            <div className="animated-text">
+                <div className='text-format'>
+                    <h1>text:{newText}</h1>
+                </div>
+            </div>
+
         </div>
     )
 }
 
 export default Loading;
-
-//style={{ transition: '.3s', marginTop: 40, fontSize: '5em', position: 'absolute', transformOrigin: 'center bottom', transform: { from: 'translateX(-100%) rotate(-90deg)', enter: 'translateX(0%)', leave: 'translateX(100%) rotate(90deg)', } }}

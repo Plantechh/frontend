@@ -1,0 +1,35 @@
+.button-result-restart{
+    position: absolute;
+    width: 334px;
+    height: 84px;
+    left: 163px;
+    top: 1029px;
+    background: #037921;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 70px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 150%;
+    letter-spacing: -0.011em;
+    color: #FFFFFF;
+}
+
+.button-result-share{
+    position: absolute;
+    width: 281px;
+    left: 1530px;
+    top: 1058px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #043B24;
+}
+
+.share-icon{
+    position: absolute;
+    left: 110%;
+    top: 8.38%;
+}
