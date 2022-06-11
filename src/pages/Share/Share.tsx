@@ -14,7 +14,8 @@ function Share() {
             </view>
             <h1 className="text">scaneie e compartilhe nas suas redes sociais</h1>
             <img src={ArrowIcon} alt="ArrowIcon" className='bg-position' />
-            <button className="buttonClose" onClick={() => navigate('/result')}>fechar</button>
+            <button className="buttonClose" onClick={() => navigate('/result')}>fechar
+            </button>
             <view className='icon'>
                 <img src={XIcon} alt="XIcon" className='x-icon' />
             </view>
