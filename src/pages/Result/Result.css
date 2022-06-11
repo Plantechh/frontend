@@ -14,6 +14,7 @@
     line-height: 150%;
     letter-spacing: -0.011em;
     color: #FFFFFF;
+    border: 0;
 }
 
 .button-result-share{
@@ -26,10 +27,80 @@
     font-weight: 600;
     font-size: 40px;
     color: #043B24;
+    border: 0;
 }
 
 .share-icon{
     position: absolute;
     left: 110%;
     top: 8.38%;
+}
+
+.name{
+    position: absolute;
+    width: 837px;
+    height: 139px;
+    left: 163px;
+    top: 75px; /*114px*/
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100px;
+    line-height: 150px;
+    text-align: center;
+    color: #043B24;
+}
+
+.scientificName{
+    position: absolute;
+    width: 774px;
+    height: 109px;
+    left: 163px;
+    top: 210px; /*239px*/
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.011em;
+    color: #037921;
+}
+
+.arrow-link{
+    position: absolute;
+    left: 955px;
+    top: 295px;
+    width: 30px;
+    height: 30px;
+}
+
+.container{
+    position: absolute;
+    width: 1300px;
+    height: 645px;
+    left: 163px;
+    top: 386px;
+}
+
+.describe{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 150%;
+    letter-spacing: -0.011em; 
+    color: #043B24; 
+}
+
+.negrito{
+    font-weight: bold;
+}
+
+.container-image{
+    position: absolute;
+    width: 478px;
+    height: 635px;
+    left: 1417px;
+    top: 352px;
 }
