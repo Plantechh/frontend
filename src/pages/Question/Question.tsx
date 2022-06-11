@@ -32,17 +32,28 @@ function Question() {
     useEffect(() => {
         fetchQuestions();
     }, []);
+
+    useEffect(() => {
+        if(context.questions.length == 0 && context.points > 0) {
+            alert('END TOUR');
+            context.setLoading(true);
+            console.log("finish questions points", context.points);
+        }
+    }, [context.points]);
+    const endQuestions = () => {
+        console.log("FINISH TOUR POINTS", context.points);
+        context.setLoading(true);
+    }
     const proxima = (points: string) => {
         context.questions.shift();
-        console.log(totalPorcent);
+        context.setTotalLoadbar(context.loaded + totalPorcent);
         if(context.questions.length > 0) {
             setCurrent(context.questions[0]);
+            console.log("somei", points);
             context.setPoints((prev: number) => prev + parseInt(points));
         }else{
-            alert('END seus pontos: ' + context.points);
+            context.setPoints((prev: number) => prev + parseInt(points));
         }
-        context.setTotalLoadbar(context.loaded + totalPorcent);
-        console.log("pontos somou",context.points, points);
         
     }
     if(context.loading == true) {
