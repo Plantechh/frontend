@@ -10,6 +10,7 @@ function QuestionProvider(props: any) {
     const [remainQuestions, setRemainQuestions] = useState<any[]>([]);
     const [loading, setLoading] = useState<Boolean>(true);
     const [points, setPoints] = useState<number>(0);
+    const [answers, setAnswers] = useState<any>([]);
     const api = useAPI();
 
     const setTotalLoadbar = (total: number) => {
@@ -40,6 +41,8 @@ function QuestionProvider(props: any) {
         setQuestions,
         points,
         setPoints,
+        answers,
+        setAnswers,
     }
     return (
         <QuestionContext.Provider value={response}>

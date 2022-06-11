@@ -2,36 +2,63 @@ import React, { useEffect, useState } from 'react';
 import './Loading.css';
 import Plant from './Plant.json';
 import Lottie from 'react-lottie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const text = [
-    "carregando...",
-    "estamos avaliando seus dados",
-    "você sabia que 68% das plantas estão ameaçadas de extinção?",
-    "você sabia que plantas podem ouvir"
+const texts = [
+    "Carregando...",
+    "Estamos avaliando seus dados",
+    "Você sabia que 68% das plantas estão ameaçadas de extinção?",
+    "Você sabia que plantas podem ouvir",
 ];
+export interface ILoadingProps {
+    forceLoading: boolean,
+}
 
-function Loading() {
+function Loading(props: ILoadingProps) {
     const defaultOptions = {
         loop: true, autoplay: true, animationData: Plant,
     };
 
-    const [newText, setnewText] = useState(0);
+    const navigate = useNavigate();
+    const [newText, setNewText] = useState({
+        text: texts[0],
+        index: 0
+    });
 
+    useEffect(() => {
+        if (props.forceLoading) {
+            const time = setInterval(() => {
+                const curIndex = newText.index;
+                if (curIndex > 3) {
+                    clearInterval(time);
+                    return navigate('/share');
+                }
+                console.log(curIndex);
+                setNewText((prev: any) => {
+                    return {
+                        text: texts[prev.index],
+                        index: prev.index + 1
+                    }
+                });
+            }, 2000)
+            return () => clearInterval(time);
+        }
+    }, [newText]);
     return (
-        <div>
-            <Lottie style={{ flex: 1, padding: 0, margin: 0, position: 'absolute', left: 20, top: 150, }}
-                options={defaultOptions}
-                isPaused={false}
-                isStopped={false}
-                direction={1}
-                speed={1.5}
-                height={600}
-                width={1900}
-                isClickToPauseDisabled={false}
-            />
+        <div className='full'>
+            <div className="lottie">
+                <Lottie
+                    options={defaultOptions}
+                    isPaused={false}
+                    isStopped={false}
+                    direction={1}
+                    speed={1.5}
+                    isClickToPauseDisabled={false}
+                />
+            </div>
             <div className="animated-text">
                 <div className='text-format'>
-                    <h1>text:{newText}</h1>
+                    {newText.text}
                 </div>
             </div>
 

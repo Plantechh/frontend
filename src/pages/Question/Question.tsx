@@ -35,29 +35,28 @@ function Question() {
 
     useEffect(() => {
         if(context.questions.length == 0 && context.points > 0) {
-            alert('END TOUR');
-            context.setLoading(true);
-            console.log("finish questions points", context.points);
+            return navigate('/loading');
         }
     }, [context.points]);
-    const endQuestions = () => {
-        console.log("FINISH TOUR POINTS", context.points);
-        context.setLoading(true);
-    }
-    const proxima = (points: string) => {
+
+    const proxima = (alternative: any) => {
         context.questions.shift();
         context.setTotalLoadbar(context.loaded + totalPorcent);
+        context.answers.push({
+            id_alternative: alternative.id + "",
+            response: alternative.points + ""
+        })
         if(context.questions.length > 0) {
             setCurrent(context.questions[0]);
-            console.log("somei", points);
-            context.setPoints((prev: number) => prev + parseInt(points));
+            context.setPoints((prev: number) => prev + parseInt(alternative.points));
         }else{
-            context.setPoints((prev: number) => prev + parseInt(points));
+            context.setPoints((prev: number) => prev + parseInt(alternative.points));
         }
+        context.setAnswers(context.answers);
         
     }
     if(context.loading == true) {
-        return (<Loading></Loading>)
+        return (<Loading forceLoading={false}></Loading>)
     }
     if(!currentQuestion.id) {
         setCurrent(context.questions[0]);
@@ -74,12 +73,12 @@ function Question() {
             </div>
             <div className="answers">
                 <div className="line">
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[0].points)} text={"Ir para um show de stand up"} color={"green"} />
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[1].points)} text={"Ir pra piscina com a galera em um dia de sol"} color={"orange"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[0])} text={"Ir para um show de stand up"} color={"green"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[1])} text={"Ir pra piscina com a galera em um dia de sol"} color={"orange"} />
                 </div>
                 <div className="line">
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[2].points)} text={"Ler um livro deitado numa rede tomando uma bebida quentinha"} color={"pink"} />
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[3].points)} text={"Ficar assistindo série num dia chuvoso debaixo de um edredom quentinho"} color={"yellow"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[2])} text={"Ler um livro deitado numa rede tomando uma bebida quentinha"} color={"pink"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[3])} text={"Ficar assistindo série num dia chuvoso debaixo de um edredom quentinho"} color={"yellow"} />
                 </div>
             </div>
         </div>

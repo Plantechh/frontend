@@ -1,15 +1,24 @@
 .text-format{
-    position: absolute;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 85px;
-    line-height: 128px;
     color: #043B24;
-    left: 681px; /*418px*/
-    top: 600px; /*681px*/
+    text-align: center;
 }
-
+.full {
+  width: 2000px;
+  height: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.lottie {
+  width: 1900px;
+  height: 600px;
+}
+/* 
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -18,4 +27,4 @@
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
-}
+} */

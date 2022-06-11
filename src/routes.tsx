@@ -1,4 +1,3 @@
-import App from './App';
 import { Route, BrowserRouter as Router, Routes as RouterRoutes } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Question from './pages/Question/Question';
@@ -20,7 +19,7 @@ function Routes() {
                 }>
                 </Route>
                 <Route path="/loading" element={
-                    <Loading />
+                    <Loading forceLoading={true} />
                 }>
                 </Route>
                 <Route path="/result" element={
