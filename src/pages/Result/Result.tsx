@@ -5,13 +5,17 @@ import Arrow2Icon from '../../assets/Arrow2Icon.png'
 import QrCode from '../../assets/QrCode.png'
 import XIcon from '../../assets/XIcon.png'
 import ArrowIcon from '../../assets/ArrowIcon.png'
+import { useState } from 'react';
 
 function Result() {
     const navigate = useNavigate();
-    const changeEffectOn = () => {
-        document.getElementById("blurOn")?.classList.add("on-blur-effect");
-    }
+    const [isBlured, setBlured] = useState<boolean>(false);
 
+    if (isBlured) {
+        document.getElementById("blurOn")?.classList.add("on-blur-effect");
+    } else {
+        document.getElementById("blurOn")?.classList.remove("on-blur-effect");
+    }
     return (
         <div>
             <h1 className="name">Coroa-de-frade</h1>
@@ -22,24 +26,26 @@ function Result() {
             </div>
             <div className="container-image"></div>
             <button className="button-result-restart" onClick={() => navigate('/')}>reiniciar</button>
-            <button className="button-result-share" onClick={changeEffectOn}>compartilhe
+            <button className="button-result-share" onClick={() => setBlured(true)}>compartilhe
                 <img src={ShareIcon} alt="ShareIcon" className='share-icon' />
             </button>
             <div id="blurOn"></div>
 
-            <div>
-                <view className='bg-green'></view>
-                <view className='bg-qrcode'>
-                    <img src={QrCode} alt="QrCode" className='qrcode-position' />
-                </view>
-                <h1 className="text">scaneie e compartilhe nas suas redes sociais</h1>
-                <img src={ArrowIcon} alt="ArrowIcon" className='bg-position' />
-                <button className="buttonClose" onClick={() => navigate('/result')}>fechar
-                </button>
-                <view className='icon'>
-                    <img src={XIcon} alt="XIcon" className='x-icon' />
-                </view>
-            </div>
+            {isBlured ?
+                <div>
+                    <view className='bg-green'></view>
+                    <view className='bg-qrcode'>
+                        <img src={QrCode} alt="QrCode" className='qrcode-position' />
+                    </view>
+                    <h1 className="text">scaneie e compartilhe nas suas redes sociais</h1>
+                    <img src={ArrowIcon} alt="ArrowIcon" className='bg-position' />
+                    <button className="buttonClose" onClick={() => navigate('/result')}>fechar
+                    </button>
+                    <view className='icon' onClick={() => setBlured(false)}>
+                        <img src={XIcon} alt="XIcon" className='x-icon' />
+                    </view>
+                </div>
+            : null}
         </div >
     )
 }

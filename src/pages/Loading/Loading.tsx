@@ -31,7 +31,7 @@ function Loading(props: ILoadingProps) {
                 const curIndex = newText.index;
                 if (curIndex > 3) {
                     clearInterval(time);
-                    return navigate('/share');
+                    return navigate('/result');
                 }
                 console.log(curIndex);
                 setNewText((prev: any) => {
