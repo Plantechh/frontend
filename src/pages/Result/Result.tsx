@@ -1,10 +1,17 @@
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Result.css';
-import ShareIcon from './ShareIcon.png'
-import Arrow2Icon from './Arrow2Icon.png'
+import ShareIcon from '../../assets/ShareIcon.png'
+import Arrow2Icon from '../../assets/Arrow2Icon.png'
+import QrCode from '../../assets/QrCode.png'
+import XIcon from '../../assets/XIcon.png'
+import ArrowIcon from '../../assets/ArrowIcon.png'
 
 function Result() {
     const navigate = useNavigate();
+    const changeEffectOn = () => {
+        document.getElementById("blurOn")?.classList.add("on-blur-effect");
+    }
+
     return (
         <div>
             <h1 className="name">Coroa-de-frade</h1>
@@ -15,9 +22,24 @@ function Result() {
             </div>
             <div className="container-image"></div>
             <button className="button-result-restart" onClick={() => navigate('/')}>reiniciar</button>
-            <button className="button-result-share" onClick={() => navigate('/share')}>compartilhe
+            <button className="button-result-share" onClick={changeEffectOn}>compartilhe
                 <img src={ShareIcon} alt="ShareIcon" className='share-icon' />
             </button>
+            <div id="blurOn"></div>
+
+            <div>
+                <view className='bg-green'></view>
+                <view className='bg-qrcode'>
+                    <img src={QrCode} alt="QrCode" className='qrcode-position' />
+                </view>
+                <h1 className="text">scaneie e compartilhe nas suas redes sociais</h1>
+                <img src={ArrowIcon} alt="ArrowIcon" className='bg-position' />
+                <button className="buttonClose" onClick={() => navigate('/result')}>fechar
+                </button>
+                <view className='icon'>
+                    <img src={XIcon} alt="XIcon" className='x-icon' />
+                </view>
+            </div>
         </div >
     )
 }
