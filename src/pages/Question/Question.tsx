@@ -66,7 +66,9 @@ function Question() {
     if(!currentQuestion.id) {
         setCurrent(context.questions[0]);
     }
-    console.log(currentQuestion.alternatives);
+    if(!currentQuestion.alternatives) {
+        return (<Loading forceLoading={false}></Loading>) 
+    }
     return (
         <div className="bg-grey">
             <div className="header">
