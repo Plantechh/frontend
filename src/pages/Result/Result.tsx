@@ -5,47 +5,62 @@ import Arrow2Icon from '../../assets/Arrow2Icon.png'
 import QrCode from '../../assets/QrCode.png'
 import XIcon from '../../assets/XIcon.png'
 import ArrowIcon from '../../assets/ArrowIcon.png'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { QuestionContext } from '../../context/QuestionContext';
+import Loading from '../Loading/Loading';
 
 function Result() {
     const navigate = useNavigate();
+    const context = useContext(QuestionContext);
     const [isBlured, setBlured] = useState<boolean>(false);
 
-    if (isBlured) {
-        document.getElementById("blurOn")?.classList.add("on-blur-effect");
-    } else {
-        document.getElementById("blurOn")?.classList.remove("on-blur-effect");
+    useEffect(() => {
+        if (isBlured) {
+            document.getElementById("blur")?.classList.add("blur-all");
+        } else {
+            document.getElementById("blur")?.classList.remove("blur-all");
+        }
+    }, [isBlured]);
+
+    if (!context.requestResult.id) {
+        console.log("context", context.requestResult);
+        return (<Loading forceLoading={false}></Loading>)
     }
     return (
         <div>
-            <h1 className="name">Coroa-de-frade</h1>
-            <h1 className="scientificName">Melocactus bahiensis</h1>
-            <img src={Arrow2Icon} alt="Arrow2Icon" className='arrow-link' />
-            <div className="container">
-                <a className="describe">Você é uma pessoa <label htmlFor="" className="negrito">forte e durão</label>(ona), como o cacto.  Por ser <label htmlFor="" className="negrito">introvertido</label>(a), pode acabar sendo rude e machucando sem querer (assim como o cacto machuca com os seus espinhos) com quem não conhece, mas quem o conhece sabe quão <label htmlFor="" className="negrito">especial e raro</label>(a) você é. Você adora ir na praia para tomar sol, mas não gosta de passar muito tempo na água. Você sempre será lembrado(a) como aquela pessoa que é <label htmlFor="" className="negrito">esforçada e trabalhadora</label> e que, mesmo nas condições mais adversas (como uma seca), se mantém em pé e consegue tirar aprendizados até desses momentos difíceis.</a>
+            <div className='container' id="blur">
+                <h1 className='name'>{context.requestResult.name}</h1>
+                <h3 className='scientificName'>{context.requestResult.scientificName} <img src={Arrow2Icon} alt="Arrow2Icon" className='arrow-link' /></h3>
+                <div className="desc_img">
+                    <div className="text">
+                        <p>{context.requestResult.describe}</p>
+                    </div>
+                    <div className="img">
+                        <img src={context.requestResult.image} className='image' alt={context.requestResult.name} />
+                    </div>
+                </div>
+                <div className="buttons">
+                    <button className='restart_button' onClick={() => navigate('/')}>Reiniciar</button>
+                    <button className="button-result-share" onClick={() => setBlured(true)}>compartilhe
+                        <img src={ShareIcon} alt="ShareIcon" className='share-icon' />
+                    </button>
+                </div>
             </div>
-            <div className="container-image"></div>
-            <button className="button-result-restart" onClick={() => navigate('/')}>reiniciar</button>
-            <button className="button-result-share" onClick={() => setBlured(true)}>compartilhe
-                <img src={ShareIcon} alt="ShareIcon" className='share-icon' />
-            </button>
-            <div id="blurOn"></div>
-
             {isBlured ?
                 <div>
                     <view className='bg-green'></view>
                     <view className='bg-qrcode'>
                         <img src={QrCode} alt="QrCode" className='qrcode-position' />
                     </view>
-                    <h1 className="text">scaneie e compartilhe nas suas redes sociais</h1>
+                    <h1 className="textQR">Scaneie e compartilhe nas suas redes sociais</h1>
                     <img src={ArrowIcon} alt="ArrowIcon" className='bg-position' />
-                    <button className="buttonClose" onClick={() => navigate('/result')}>fechar
+                    <button className="buttonClose" onClick={() => setBlured(false)}>fechar
                     </button>
                     <view className='icon' onClick={() => setBlured(false)}>
                         <img src={XIcon} alt="XIcon" className='x-icon' />
                     </view>
                 </div>
-            : null}
+                : null}
         </div >
     )
 }

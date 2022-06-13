@@ -1,16 +1,24 @@
-import { IQuestion } from './../core/responses/Question.interface';
 import axios from "axios";
 
 function useAPI() {
     const requester = axios.create({
-        baseURL: 'https://mocki.io/'
+        baseURL: 'https://cors-anywhere.herokuapp.com/http://157.245.143.202/',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        }
     });
 
     const getQuestions = async (): Promise<any> => {
-        const {data} = await requester.get<IQuestion>('v1/d7b27cc7-89c4-4cbe-94e4-3239d9edf52a');
+        const {data} = await requester.get('get/questions/');
         return data;
     }
 
-    return {getQuestions};
+    const getResult = async(userAnswers: any): Promise<any> => {
+        const {data} = await requester.post("find/response/", {questions: userAnswers});
+        return data;
+    }
+
+    return {getQuestions, getResult};
 }
 export default useAPI;

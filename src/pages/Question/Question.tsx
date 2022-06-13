@@ -32,9 +32,15 @@ function Question() {
     useEffect(() => {
         fetchQuestions();
     }, []);
+    const request = useCallback(async() => {
+        const data = await api.getResult(context.answers);
+        console.log("DATA!!!", data);
+        context.setRequestResult(data);
+    }, [context.requestResult])
 
     useEffect(() => {
         if(context.questions.length == 0 && context.points > 0) {
+            request();
             return navigate('/loading');
         }
     }, [context.points]);
@@ -43,7 +49,7 @@ function Question() {
         context.questions.shift();
         context.setTotalLoadbar(context.loaded + totalPorcent);
         context.answers.push({
-            id_alternative: alternative.id + "",
+            id_question: alternative.id + "",
             response: alternative.points + ""
         })
         if(context.questions.length > 0) {

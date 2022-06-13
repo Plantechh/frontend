@@ -8,25 +8,28 @@ import Result from './pages/Result/Result';
 function Routes() {
 
     return (
-        <Router>
-            <RouterRoutes>
-                <Route index element={<Home />} />
-                <Route path="/question" element={
-                    <QuestionProvider>
+        <QuestionProvider>
+            <Router>
+                <RouterRoutes>
+
+                    <Route index element={<Home />} />
+                    <Route path="/question" element={
                         <Question />
-                    </QuestionProvider>
-                }>
-                </Route>
-                <Route path="/loading" element={
-                    <Loading forceLoading={true} />
-                }>
-                </Route>
-                <Route path="/result" element={
-                    <Result />
-                }>
-                </Route>
-            </RouterRoutes>
-        </Router>
+                    }>
+                    </Route>
+                    <Route path="/loading" element={
+                        <QuestionProvider>
+                            <Loading forceLoading={true} />
+                        </QuestionProvider>
+                    }>
+                    </Route>
+                    <Route path="/result" element={
+                        <Result />
+                    }>
+                    </Route>
+                </RouterRoutes>
+            </Router>
+        </QuestionProvider>
     )
 }
 export default Routes;

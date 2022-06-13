@@ -1,125 +1,76 @@
-.button-result-restart{
-    position: absolute;
-    width: 334px;
+.container {
+    margin: 0px 100px 0px 100px;
+}
+
+.name {
+    color: #043B24;
+    font-weight: bold;
+    font-size: 100px;
+    margin: 10px 0px 0px 0px;
+}
+
+.scientificName {
+    margin: 0px;
+    color: #037921;
+    font-style: italic;
+    font-size: 70px;
+    font-weight: 400;
+}
+
+.arrow-link {
+    margin: 0px 0px 0px 10px;
+}
+
+.desc_img {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    margin: 10px 0px;
+    font-size: 40px;
+    color: #043B24;
+    font-weight: 400;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.restart_button {
+    width: 340px;
     height: 84px;
-    left: 163px;
-    top: 1029px;
-    background: #037921;
+    background-color: #037921;
+    color: white;
     box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5);
     border-radius: 70px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
     font-size: 50px;
-    line-height: 150%;
-    letter-spacing: -0.011em;
-    color: #FFFFFF;
-    border: 0;
 }
 
-.on-blur-effect{
-    background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(6px); 
+.on-blur-effect {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
     height: 100vh;
-	width: 100%;
+    width: 100%;
 }
 
-.off-blur-effect{
-    background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(0px); 
-    height: 100vh;
-	width: 100%;
-}
+.button-result-share {
 
-.button-result-share{
-    position: absolute;
-    width: 281px;
-    left: 1530px;
-    top: 1058px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
     color: #043B24;
     border: 0;
-}
-
-.share-icon{
-    position: absolute;
-    left: 110%;
-    top: 8.38%;
-}
-
-.name{
-    position: absolute;
-    width: 837px;
-    height: 139px;
-    left: 163px;
-    top: 75px; /*114px*/
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 100px;
-    line-height: 150px;
     text-align: center;
-    color: #043B24;
 }
 
-.scientificName{
-    position: absolute;
-    width: 774px;
-    height: 109px;
-    left: 163px;
-    top: 210px; /*239px*/
-    font-family: 'Poppins';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 70px;
-    line-height: 150%;
-    text-align: center;
-    letter-spacing: -0.011em;
-    color: #037921;
+.share-icon {
+    margin: 0px 25px;
 }
 
-.arrow-link{
-    position: absolute;
-    left: 955px;
-    top: 295px;
-    width: 30px;
-    height: 30px;
-}
-
-.container{
-    position: absolute;
-    width: 1300px;
-    height: 645px;
-    left: 163px;
-    top: 386px;
-}
-
-.describe{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 150%;
-    letter-spacing: -0.011em; 
-    color: #043B24; 
-}
-
-.negrito{
-    font-weight: bold;
-}
-
-.container-image{
-    position: absolute;
-    width: 478px;
-    height: 635px;
-    left: 1417px;
-    top: 352px;
-}
-
-.buttonClose{
+.buttonClose {
     border: none;
     position: absolute;
     width: 154px;
@@ -133,9 +84,9 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-  }
+}
 
-.bg-green{
+.bg-green {
     position: absolute;
     width: 935px;
     height: 351px;
@@ -145,7 +96,7 @@
     border-radius: 61px;
 }
 
-.bg-qrcode{
+.bg-qrcode {
     position: absolute;
     width: 673px;
     height: 665px;
@@ -155,46 +106,54 @@
     border-radius: 34px;
 }
 
-.qrcode-position{
+.qrcode-position {
     position: center;
     width: 593px;
     height: 593px;
     margin: 0rem 0;
-    padding:35px;
+    padding: 35px;
 }
 
-.text{
+.textQR {
     position: absolute;
     width: 973px;
     left: 157px;
-    top: 270px; /*311px*/
+    top: 270px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 75px;
     line-height: 112px;
     text-align: center;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 
-.icon{
+.icon {
     position: absolute;
     width: 70px;
     height: 70px;
     left: 1842px;
     top: 95px;
     border-radius: 50%;
-    background: #043B24; 
+    background: #043B24;
 }
 
-.x-icon{
+.x-icon {
     position: absolute;
-    left: 25%; /*154.92%*/
-    top: 25%; /*4.7%*/
+    left: 25%;
+    top: 25%;
 }
 
-.bg-position{
+.bg-position {
     position: absolute;
     left: 1010px;
     top: 535px;
+}
+
+.blur-all {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }

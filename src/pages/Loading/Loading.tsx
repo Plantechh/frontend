@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import './Loading.css';
 import Plant from './Plant.json';
 import Lottie from 'react-lottie';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { QuestionContext } from '../../context/QuestionContext';
+import useAPI from '../../hooks/useApi';
 
 const texts = [
     "Carregando...",
@@ -20,11 +22,13 @@ function Loading(props: ILoadingProps) {
     };
 
     const navigate = useNavigate();
+    const context = useContext(QuestionContext);
+    const api = useAPI();
+
     const [newText, setNewText] = useState({
         text: texts[0],
         index: 0
     });
-
     useEffect(() => {
         if (props.forceLoading) {
             const time = setInterval(() => {
