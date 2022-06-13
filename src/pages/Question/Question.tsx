@@ -34,7 +34,6 @@ function Question() {
     }, []);
     const request = useCallback(async() => {
         const data = await api.getResult(context.answers);
-        console.log("DATA!!!", data);
         context.setRequestResult(data);
     }, [context.requestResult])
 
@@ -67,6 +66,7 @@ function Question() {
     if(!currentQuestion.id) {
         setCurrent(context.questions[0]);
     }
+    console.log(currentQuestion.alternatives);
     return (
         <div className="bg-grey">
             <div className="header">
@@ -79,12 +79,12 @@ function Question() {
             </div>
             <div className="answers">
                 <div className="line">
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[0])} text={"Ir para um show de stand up"} color={"green"} />
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[1])} text={"Ir pra piscina com a galera em um dia de sol"} color={"orange"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[0])} text={currentQuestion.alternatives[0].title} color={"green"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[1])} text={currentQuestion.alternatives[1].title} color={"orange"} />
                 </div>
                 <div className="line">
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[2])} text={"Ler um livro deitado numa rede tomando uma bebida quentinha"} color={"pink"} />
-                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[3])} text={"Ficar assistindo série num dia chuvoso debaixo de um edredom quentinho"} color={"yellow"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[2])} text={currentQuestion.alternatives[2].title} color={"pink"} />
+                    <AnswerButton onClick={() => proxima(currentQuestion.alternatives[3])} text={currentQuestion.alternatives[3].title} color={"yellow"} />
                 </div>
             </div>
         </div>
