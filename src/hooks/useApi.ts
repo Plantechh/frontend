@@ -2,7 +2,7 @@ import axios from "axios";
 
 function useAPI() {
     const requester = axios.create({
-        baseURL: 'https://cors-anywhere.herokuapp.com/http://157.245.143.202/',
+        baseURL: 'http://157.245.143.202/',
         headers: {
             'Access-Control-Allow-Origin' : '*',
             'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
