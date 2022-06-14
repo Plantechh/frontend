@@ -2,7 +2,7 @@ import axios from "axios";
 
 function useAPI() {
     const requester = axios.create({
-        baseURL: 'http://157.245.143.202/',
+        baseURL: 'http://157.245.143.202/api/',
         headers: {
             'Access-Control-Allow-Origin' : '*',
             'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
